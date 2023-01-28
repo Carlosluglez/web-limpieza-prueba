@@ -32,7 +32,7 @@ if (isset($_POST['alta'])) {
 
     generarLogin();
 } else if (isset($_POST['logout'])) {
-    cambioCookie();
+    // cambioCookie();
     destruirSesion();
     
 }//else if (isset($_POST['boton_carrito'])) {
