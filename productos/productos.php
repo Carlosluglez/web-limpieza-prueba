@@ -46,7 +46,7 @@ else if (isset($_GET["comprar_id"])){
 
 // if (isset($_SESSION['nif_usu'])) {
 //     echo "<script>nif_usu='" . $_SESSION['nif_usu'] . "';</script>";
-
+//prueba de merge
 ?>
 
 <body>
