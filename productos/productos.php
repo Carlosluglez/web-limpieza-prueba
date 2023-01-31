@@ -1,4 +1,7 @@
+<?php
+session_start();
 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -17,36 +20,37 @@
     <!-- <script src="js/jquery-3.6.3.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
-   
+
     <title>pagina productos</title>
 </head>
 
 <?php
 
 include "php/db_common.php";
-
+$conn = create_conn();
 if (isset($_POST['alta'])) {
 
     generarAlta();
 } else if (isset($_POST['login'])) {
 
     generarLogin();
+    if (isset($_COOKIE["carrito_anonimo"])) {
+        if (usuarioLogeado()) {
+            $carrito = $_COOKIE["carrito_anonimo"];
+            var_dump($carrito);
+            setcookie("carrito_sesion" . $_SESSION["nif_usu"], $carrito);
+            destruirCookie();
+        }
+    }
 } else if (isset($_POST['logout'])) {
     // cambioCookie();
     destruirSesion();
-    
-}//else if (isset($_POST['boton_carrito'])) {
-   // anadirAlCarrito();
-//}
-else if (isset($_GET["comprar_id"])){
-
-    anadirAlCarrito();   
+} else if (isset($_POST['boton_carrito'])) {
+    anadirAlCarrito();
+    // var_dump($_COOKIE['carrito_sesion' . $_SESSION["nif_usu"]]);
+    header("Location: ".$_SERVER['PHP_SELF']);
 }
-//var_dump($_SESSION['nif_usu']);
 
-// if (isset($_SESSION['nif_usu'])) {
-//     echo "<script>nif_usu='" . $_SESSION['nif_usu'] . "';</script>";
-//prueba de merge
 ?>
 
 <body>
@@ -67,23 +71,25 @@ else if (isset($_GET["comprar_id"])){
             <li> <a href="#">Contacto</a></li>
 
             <?php
-            session_start(); 
+            // session_start(); 
             //si hay sesión iniciada podremos cerrar la sesión desde el boton con name='logaut'
+            $nif_usu = "";
             if (isset($_SESSION['nif_usu'])) {
                 if ($_SESSION['nif_usu'] != "") {
+                    $nif_usu = $_SESSION['nif_usu'];
                     echo "<li><form action='" . htmlspecialchars($_SERVER['PHP_SELF']) . "' method='post' ><input type='submit' value='logout' name='logout' id='log_button'></form></li>";
-                  //  echo '<script>$("#log_button").on("click",cerrarSesion);</script>';
+                    //  echo '<script>$("#log_button").on("click",cerrarSesion);</script>';
                     //  echo '<input type="button" id="cerrar_sesion" name="cerrar_sesion" value="Cerrar Sesion"/>';            
                 }
                 //si no hay sesion iniciada podemos registrarnos o logearnos en la pagina o en la base de datos   
             } else {
-                echo "<li><input type='button' value='login' name='login' id='log_button'></li>";             
-               // echo '<script>$("#log_button").on("click", mostrarFormularioLogin);</script>';
-           
+                echo "<li><input type='button' value='login' name='login' id='log_button'></li>";
+                // echo '<script>$("#log_button").on("click", mostrarFormularioLogin);</script>';
+
             }
 
             ?>
-              <span class="fa-solid fa-cart-shopping" id="carrito"></span>
+            <span onclick="mostrarCarrito('<?php echo $nif_usu; ?>')" class="fa-solid fa-cart-shopping" id="carrito"></span>
         </ul>
 
     </nav>
@@ -140,46 +146,85 @@ else if (isset($_GET["comprar_id"])){
             </div>
         </dialog>
 
-        <div id="capa_frm_comprar">
-            <form id="frm_comprar" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <input type="text" name="id_articulo" id="id_articulo" />
-                <input type="text" name="cantidad" id="cantidad" />
-                <input type="text" name="modo" id="modo" value="comprar" />
-            </form>
-        </div>
+        <dialog id="mostrar_carrito">
+            <div class="container_carrito">
+                <h2>CARRITO</h2>
+                <form id="frm_carrito" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <?php
+                    if (isset($_COOKIE["carrito_sesion" . $_SESSION["nif_usu"]])) {
+                        $carrito = $_COOKIE["carrito_sesion" . $_SESSION["nif_usu"]];
+                        $carrito = unserialize($carrito);
+                       // var_dump($carrito);
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<th>Nombre Producto</th><th>Precio</th><th>Cantidad</th><th>Total</th>";
+                        echo "</tr>";
+                        $suma = 0;
+                        foreach ($carrito as $key => $valor) {
+
+                            $sql = "SELECT * FROM productos WHERE id_producto=$key";
+
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
+                            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                            $result = $stmt->fetchAll();
+
+                            echo "<tr>";
+                            echo "<td>" . $result[0]['nombre'] . "</td>";
+                            echo "<td>" . $result[0]['precio'] . "</td>";
+                            echo "<td>" . $valor . "</td>";
+                            echo "<td>" . $result[0]['precio'] * $valor . "</td>";
+                            echo "</tr>";
+                            $suma += $result[0]['precio'] * $valor;
+                        }
+                        echo "<tr>";
+                        echo "<td colspan='3'>Total:</td>";
+                        echo "<td>" . $suma . "</td>";
+                        echo "</tr>";
+                        echo "</table>";
+                        echo  '<input type="submit" name="comprar" class="submit" value="COMPRAR" />';
+                    } else {
+                        echo "no tiene productos en el carro";
+                    }
+                    ?>
+
+                    <a href="#BOTON" id="boton_cerrar_carrito">CERRAR</a>
+                </form>
+            </div>
+        </dialog>
 
 
         <?php
         //pintamos la card de los productos con la info que tenemos en bbdd
         include "php/bucleProductos.php";
-        $conn = create_conn();
+
         $productos = crearSelect($conn, "SELECT * from productos");
         // var_dump($productos);
         echo "<div class='contenedor' id='contenedor'>";
         foreach ($productos as $key => $valores) {
         ?>
-        <form action="productos.php?comprar_id=<?php echo $valores['id_producto'] ?>" method="post">
-            <div>
-                <img class="imagenes" src="img/<?php echo $valores['id_producto'] ?>.jpg" alt="fotoProducto">
-                <div class="informacion">
-                    <p id="nombre_<?php echo $valores['nombre'] ?>" class="nombre"> <?php echo $valores['nombre'] ?></p>
-                    <p class="precio"><?php echo $valores['precio'] ?>€</p>
+            <form action="productos.php?comprar_id=<?php echo $valores['id_producto'] ?>" method="post">
+                <div>
+                    <img class="imagenes" src="img/<?php echo $valores['id_producto'] ?>.jpg" alt="fotoProducto">
+                    <div class="informacion">
+                        <p id="nombre_<?php echo $valores['nombre'] ?>" class="nombre"> <?php echo $valores['nombre'] ?></p>
+                        <p class="precio"><?php echo $valores['precio'] ?>€</p>
 
-                    <!-- <p><?php echo $valores['descripcion'] ?></p> -->
-                    <!-- <input type="number" min="1" max="100" id="cantidad_<?php echo $valores['id_producto'] ?>"> -->
-                    <input type="number" min="1" max="100" name="cantidad">
-                    
-                    <input type="submit" value="añadir al carrito" name="boton_carrito">
-                    <!-- <img class="fa-solid fa-cart-shopping"></img> -->
+                        <!-- <p><?php echo $valores['descripcion'] ?></p> -->
+                        <!-- <input type="number" min="1" max="100" id="cantidad_<?php echo $valores['id_producto'] ?>"> -->
+                        <input type="number" min="1" max="100" name="cantidad">
+                        <input type="submit" value="añadir al carrito" name="boton_carrito">
+                        <!-- <img class="fa-solid fa-cart-shopping"></img> -->
 
-                    
+
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
         <?php
 
         }
         echo "</div>"
+
         ?>
 
 

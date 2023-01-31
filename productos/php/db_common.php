@@ -80,84 +80,77 @@ function destruirSesion()
     }
     session_destroy();
 }
-
+//creamos el un carrito anonimo
 function anadirAlCarrito()
 {
-    $id_articulo= $_GET["comprar_id"];
-    $cantidad= $_POST["cantidad"];  
+    $id_articulo = $_GET["comprar_id"];
+    $cantidad = $_POST["cantidad"];
+    if (!usuarioLogeado()) {
+        if (isset($_COOKIE["carrito_anonimo"])) {
 
-    if (isset($_COOKIE["carrito_anonimo"])) {
-
-        $carrito = $_COOKIE["carrito_anonimo"]; //recuperamos el valor
-        $carrito = unserialize($carrito);
-        if (array_key_exists($id_articulo, $carrito)) {
-            $carrito[$id_articulo] += intval($cantidad);
+            $carrito = $_COOKIE["carrito_anonimo"]; //recuperamos el valor
+            $carrito = unserialize($carrito);
+            if (array_key_exists($id_articulo, $carrito)) {
+                $carrito[$id_articulo] += intval($cantidad);
+            } else {
+                $carrito[$id_articulo] = intval($cantidad);
+            }
+            //var_dump($carrito);
+            $serialization = serialize($carrito);
+            setcookie("carrito_anonimo", $serialization);
         } else {
-            $carrito[$id_articulo] = intval($cantidad);
+            $carrito = array();
+            if (array_key_exists($id_articulo, $carrito)) {
+                // echo "...".$producto;
+                $carrito[$id_articulo] += intval($cantidad);
+            } else {
+                $carrito[$id_articulo] = intval($cantidad);
+            }
+            // var_dump($carrito);
+
+            $serialization = serialize($carrito);
+            setcookie("carrito_anonimo", $serialization);
         }
-        var_dump($carrito);
-        $serialization = serialize($carrito);
-        setcookie("carrito_anonimo",$serialization);
     } else {
-        $carrito = array();
-        if (array_key_exists($id_articulo, $carrito)) {
-            // echo "...".$producto;
-            $carrito[$id_articulo] += intval($cantidad);
-        } else {
-            $carrito[$id_articulo] = intval($cantidad);
-        }
-        var_dump($carrito);
+        echo "hola";
+        if (isset($_COOKIE["carrito_sesion" . $_SESSION["nif_usu"]])) {
 
-        $serialization = serialize($carrito);
-        setcookie("carrito_anonimo",$serialization);
+            $carrito = $_COOKIE["carrito_sesion" . $_SESSION["nif_usu"]]; //recuperamos el valor
+            $carrito = unserialize($carrito);
+            if (array_key_exists($id_articulo, $carrito)) {
+                $carrito[$id_articulo] += intval($cantidad);
+            } else {
+                $carrito[$id_articulo] = intval($cantidad);
+            }
+        //    var_dump($carrito);
+            $serialization = serialize($carrito);
+            setcookie("carrito_sesion" . $_SESSION["nif_usu"], $serialization);
+        } else {
+            $carrito = array();
+            if (array_key_exists($id_articulo, $carrito)) {
+                // echo "...".$producto;
+                $carrito[$id_articulo] += intval($cantidad);
+            } else {
+                $carrito[$id_articulo] = intval($cantidad);
+            }
+         //   var_dump($carrito);
+
+            $serialization = serialize($carrito);
+            setcookie("carrito_sesion" . $_SESSION["nif_usu"], $serialization);
+        }
     }
 }
+
+function usuarioLogeado()
+{
+    // session_start();
+    if (isset($_SESSION['nif_usu'])) {
+        return true;
+    }
+    return false;
+}
+
 function destruirCookie()
 {
-    $_SESSION = array();
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(
-            session_name(),
-            '',
-            time() - 42000,
-            $params["path"],
-            $params["domain"],
-            $params["secure"],
-            $params["httponly"]
-        );
-    }
-    session_destroy();
+    setcookie('carrito_anonimo', "a", time() - 1);
 }
-
-
-// $id_articulo = $_POST['id_articulo'];
-// $cantidad = $_POST['cantidad'];
-
-// if (isset($_COOKIE["carrito" . $_SESSION['nif_usu']])) {
-//     $carrito = $_COOKIE["carrito" . $_SESSION['nif_usu']]; //recuperamos el valor
-
-//     $carrito = unserialize($carrito);
-//     if (array_key_exists($id_articulo, $carrito)) {
-//         $carrito[$id_articulo] += intval($cantidad);
-//     } else {
-//         $carrito[$id_articulo] = intval($cantidad);
-//     }
-//     var_dump($carrito);
-
-//     $serialization = serialize($carrito);
-//     setcookie("carrito" . $_SESSION['nif_usu'], $serialization);
-// } else {
-
-//     $carrito = array();
-//     if (array_key_exists($id_articulo, $carrito)) {
-//         // echo "...".$producto;
-//         $carrito[$id_articulo] += intval($cantidad);
-//     } else {
-//         $carrito[$id_articulo] = intval($cantidad);
-//     }
-//     var_dump($carrito);
-
-//     $serialization = serialize($carrito);
-//     setcookie("carrito" . $_SESSION['nif_usu'], $serialization);
-// }
