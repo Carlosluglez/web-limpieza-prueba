@@ -51,6 +51,9 @@ if (isset($_POST['alta'])) {
     header("Location: ".$_SERVER['PHP_SELF']);
 }
 
+// if (isset($_SESSION['nif_usu'])) {
+//     echo "<script>nif_usu='" . $_SESSION['nif_usu'] . "';</script>";
+//prueba de merge
 ?>
 
 <body>
