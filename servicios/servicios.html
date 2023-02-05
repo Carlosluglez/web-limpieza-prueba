@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <title>Pagina de servicios</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/serviciosFunc.js"></script>
+    <link href="css/servicios.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/formulario_presupuesto.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&family=Luxurious+Roman&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <nav>
+        
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars">
+            </i>
+        </label>
+        <a href="#" class="enlace">
+            <img id="logo" class="logo" alt="logo" src="../img/logo.jpg">
+        </a>
+        <ul>
+            <li> <a href="../Index.html">Inicio</a></li>
+            <li> <a href="../productos/productos.html">Productos</a></li>
+            <li> <a href="../servicios/servicios.html">Servicios</a></li>
+            <li> <a href="#">Contacto</a></li>
+            <li><input type="button" value="login" name="login" id="login_boton"></li>
+        </ul>
+
+    </nav>
+   
+
+    <!-- esto es para colocar la imagen de fondo naturaleza, limpieza, productos -->
+
+
+
+    <div class="flex-container">
+        <!--  FLEX PADRE -->
+
+        <dialog id="formulario_registro">
+            <div class="container">
+                <div class="login-container">
+                    <div class="register">
+                        <h2>SOLICITAR PRESUPUESTO</h2>
+                        <!--formulario modal aparece al hacer click en boton login -->
+                        <form id="formu">
+                            <input type="text" placeholder="NOMBRE" class="nombre" />
+                            <input type="text" placeholder="CORREO" class="correo" />
+                            <input type="number" placeholder="Nº TELEFONO" class="telef" />
+                           
+                            <textarea id="comment" name="comment" rows="4" cols="70" placeholder="COMENTARIO" maxlength="900"></textarea>
+                            <br><br>
+                            <input type="submit" class="submit" value="ENVIAR" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+        <div class="flex-item">
+            <!-- Caja Nº1 DEL FLEX -->
+            <img class="fotos" src="img/vivienda1.jpg" alt="oficina">
+            <div class="container" id="container1">
+                <p id="uno">Limpieza de viviendas</p>
+                <button class="button" id="presupuesto1">Solicitar presupuesto</button>
+            </div>
+        </div>
+
+        <div class="flex-item">
+            <!-- Caja Nº2 DEL FLEX -->
+            <img class="fotos" src="img/cristal2.jpg" alt="oficina">
+            <div class="container" id="container2">
+                <p id="dos">Limpieza de cristales</p>
+                <button class="button" id="presupuesto2">Solicitar presupuesto</button>
+            </div>
+        </div>
+
+        <div class="flex-item">
+            <!-- Caja Nº3 DEL FLEX-->
+            <img class="fotos" src="img/oficina3.jpg" alt="oficina">
+            <div class="container" id="container3">
+                <p>Limpieza de oficinas</p>
+                <button class="button" id="presupuesto3">Solicitar presupuesto</button>
+            </div>
+        </div>
+        <div class="flex-item">
+            <!-- Caja Nº4 DEL FLEX -->
+            <img class="fotos" src="img/local4.jpg" alt="oficina">
+            <div class="container" id="container4">
+                <p>Limpieza de locales comerciales</p>
+                <button class="button" id="presupuesto4">Solicitar presupuesto</button>
+            </div>
+        </div>
+        <div class="flex-item">
+            <!-- Caja Nº5 DEL FLEX -->
+            <img class="fotos" src="img/comunidad5.jpg" alt="oficina">
+            <div class="container" id="container5">
+                <p>Limpieza de comunidades</p>
+                <button class="button" id="presupuesto5">Solicitar presupuesto</button>
+            </div>
+        </div>
+        <div class="flex-item">
+            <!-- Caja Nº6 FLEX-->
+            <img class="fotos" src="img/fachada6.jpg" alt="oficina">
+            <div class="container" id="container6">
+                <p>Limpieza de fachadas de edificios</p>
+                <button class="button" id="presupuesto6">Solicitar presupuesto</button>
+            </div>
+        </div>
+        <div class="flex-item">
+            <!-- Caja Nº7 FLEX-->
+            <img class="fotos" src="img/garaje7.jpg" alt="oficina">
+            <div class="container" id="container7">
+                <p>Limpieza de garajes</p>
+                <button class="button" id="presupuesto7">Solicitar presupuesto</button>
+            </div>
+        </div>
+
+        <div class="flex-item">
+            <!-- Caja Nº8 FLEX-->
+            <img class="fotos" src="img/reforma8.jpg" alt="oficina">
+            <div class="container" id="container8">
+                <p>Limpieza de casas después de reforma</p>
+                <button class="button" id="presupuesto8">Solicitar presupuesto</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
