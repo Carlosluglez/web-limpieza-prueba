@@ -1,0 +1,152 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    
+}
+
+#formulario_registro{
+    top:20%;   
+    margin:0px auto; 
+    padding: 0px;
+    border-style: none;
+    box-sizing: content-box;
+
+    background-color: #caf1d7;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    z-index: 1;
+}
+.container{
+   
+    width: 100%px;
+    height: auto;
+    /* padding: 10px; */
+    /*display: flex; */
+    justify-content: center;
+    box-sizing: content-box;
+   
+}
+
+.login-container{
+    display: flex;
+    width:625px ;
+    height: auto;
+    justify-content: center;
+    
+    /* border-color: 1px solid black ; */
+    box-shadow:0 1px 1px 0 black rgba(0,0,0, .2 green, blue, alpha) ;
+}
+
+.register,.login{
+    flex:1;
+}
+.register{
+    padding: 40px;
+    position: relative;
+}
+.register h2{
+    color:rgb(53, 53, 53);
+    margin-bottom: 30px;
+}
+
+.register input{
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 25px;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: 1px solid #a8a8a8;
+    color:black;
+
+}
+
+.register textarea{
+    width: 100%;
+    padding: 5px;
+    font-size: 17px;
+    color:black;
+}
+.register input:focus,
+.register input:active{
+    outline: none;
+}
+
+.register .submit{
+    cursor: pointer;
+    width: auto;
+    background-color: green;
+    color: white;
+    border-bottom-style: none;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0, .2);
+    border-radius: 3px;
+}
+.login{
+    background-image: linear-gradient(to bottom right, #1ab6b6,#4cac6e   );
+    padding: 40px;
+}
+.login h2{
+    color:white;
+    margin-bottom: 45px;
+}
+.login button i{
+
+    position:absolute;
+    top:12px;
+    left:12px;
+}
+
+.login button{
+    width: 100%;
+    margin:15px 0px ;
+    padding: 10px;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0, .2);
+    cursor:pointer;
+    position: relative;
+}
+
+.login .fb{
+    background-color: #3b5999;
+    border-style: none;
+    color:white;
+}
+.login .tw{
+    background-color: #55acef;
+    border-style: none;
+    color:white;
+}
+.login .cr{
+    background-color: #33d4ce;
+    border-style: none;
+    color:white;
+}
+
+
+
+
+@media only screen and (max-width:656px){
+
+
+.login-container{
+    display: block;
+}
+.register, .login{
+    flex:none;
+}
+.container{
+
+    width: auto ;
+    height: auto;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.login-container{
+    width:auto ;
+    height: auto;
+    /* border-color: 1px solid black ; */
+    box-shadow:0 1px 1px 0 black rgba(0,0,0, .2 green, blue, alpha) ;
+}
+}
+
+

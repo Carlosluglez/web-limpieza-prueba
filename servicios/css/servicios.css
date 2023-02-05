@@ -1,0 +1,287 @@
+
+.flex-container {
+    display: flex;
+     /* justify-content: center; */
+    justify-content: space-around;
+    flex-flow: row wrap;
+    width: 100%;
+  /* height: auto;*/
+    gap: 0px 20px;
+    padding: 0px;
+    margin: 0px;
+    padding-top: 50px;
+    list-style: none;
+
+    background-image: url("../img/imgAmpliada.png");
+    background-size: cover;
+ 
+  }
+
+  
+  .flex-container > div {
+    background-color: rgba(250, 250, 250, 0.9);
+    text-align: center;
+    font-size: 27px;
+    opacity: 1;
+  }
+
+  .flex-item {
+    width: 350px;
+    height: 250px;
+    margin: 5px; /* auto */
+   
+    box-shadow: 0 4px 8px 0 rgba(85, 85, 85, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 10px;
+    
+    justify-self: center;
+
+
+    background-color:rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+    font-size:18px;
+    font-family:"Calibri";
+    line-height:2rem;
+  }
+
+
+  #container1 {
+    padding-top: 46px;
+    
+  }
+  #container2 {
+    padding-top: 46px;
+  }
+  
+  #container3 {
+    padding-top: 46px;
+  }
+  #container5 {
+    padding-top: 46px;
+  }
+  #container7 {
+    margin-top: 40px;
+    
+  }
+  
+  
+  .fotos {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    width: 60%;
+    border-radius: 8px;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 10px ;
+    
+  }
+
+  .button {
+    position: relative;
+    background-color: #4da351;
+    border: none;
+    font-size: 15px;
+    color: #FFFFFF;
+    padding: 5px;
+    width: 200px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+    
+  }
+  
+  .button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  .button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+
+  .container .button:hover {
+    background-color: rgb(22, 87, 20);
+    color: white;
+  }
+
+
+
+
+/* COPIA DEL CSS DE principal.css de Carlos */
+  /* Navegacion Principal/barra de navegación */
+*{
+  padding: 0px;
+  margin: -1px;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  
+}
+/*para alinear el navegador*/
+nav{
+  height: 80px;
+  width: 100%;
+  background-color: rgb(161, 204, 161);
+}
+.enlace{
+  position: absolute;
+  padding: 20px 50px;
+}
+.logo{
+  height: 40px;
+}
+
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 5px;
+}
+
+nav ul li a{
+  color:white;
+  font-size: 18px;
+  padding: 7px 7px;
+  text-transform: uppercase;
+}
+li a.active,li a:hover{
+  background-color: green;
+  transition: 3s;
+  color: rgb(213, 210, 210);
+}
+
+.checkbtn{
+  font-size:30px;
+  color:white;
+  float: right;
+  line-height: 80px;
+  margin-right: 40px;
+  cursor:pointer;
+  display:none;
+}
+#check{
+  display: none;
+}
+
+
+#login_boton{
+
+  background-color: darkgreen;
+  color:white;
+  border-radius: 7px;
+  width: 38px;
+}
+#login_boton:hover{
+
+  background-color: chartreuse;
+  color: black;
+  cursor:pointer;
+  width: 48px;
+  height: 30px;
+  transition: 1s;
+}
+
+
+
+/* para maximo de 952px tables +- */
+
+@media (max-width: 952px){
+
+  .enlace{
+      padding-left: 20px;
+  }
+  nav ul li a{
+      font-size: 16px;
+  }
+
+}
+/* para moviles max 600px */
+
+@media (min-width: 566px) and (max-width: 951px){
+  
+   .flex-item{
+    align-items:center;
+   }
+  
+}
+
+@media (max-width: 565px){
+   nav{
+    position: fixed;
+    display: block;
+    z-index: 1;
+   }
+  .checkbtn{
+     display:block;
+  }
+   ul{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgb(96, 131, 96);
+      top:78px;
+      left:-100%;
+      text-align: center;
+      transition: all .5s;
+
+      
+  }
+  nav ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+      
+  }
+  nav ul li a{
+      font-size: 20px;
+
+  }
+  li a:hover, li a.active{
+      background-color: none;
+      color:green;
+
+  }
+  #check:checked ~ ul{
+      left:0;
+     
+
+  }
+  .flex-container{
+    padding-top: 22%;
+  }
+ 
+  
+ 
+
+  /* ocultar scrollbar 
+  html, body {
+    margin: 0;
+ 
+     height: 100%; 
+     overflow: hidden;
+    }
+    */
+}
+
+
+
