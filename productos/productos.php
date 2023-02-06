@@ -53,7 +53,7 @@ if (isset($_POST['alta'])) {
 
 // if (isset($_SESSION['nif_usu'])) {
 //     echo "<script>nif_usu='" . $_SESSION['nif_usu'] . "';</script>";
-//prueba de merge
+
 ?>
 
 <body>
@@ -70,7 +70,7 @@ if (isset($_POST['alta'])) {
         <ul>
             <li> <a href="../Index.php">Inicio</a></li>
             <li> <a href="productos.php">Productos</a></li>
-            <li> <a href="#">Servicios</a></li>
+            <li> <a href="../servicios/servicios.html">Servicios</a></li>
             <li> <a href="#">Contacto</a></li>
 
             <?php

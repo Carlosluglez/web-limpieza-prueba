@@ -26,7 +26,7 @@
         <ul>
             <li> <a href="Index.php">Inicio</a></li>
             <li> <a href="productos/productos.php">Productos</a></li>
-            <li> <a href="#">Servicios</a></li>
+            <li> <a href="servicios/servicios.html">Servicios</a></li>
             <li> <a href="contactos/contactos.html">Contacto</a></li>
             <li><input type="button" value="login" name="login" id="login_boton"></li>
         </ul>

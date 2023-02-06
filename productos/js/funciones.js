@@ -36,7 +36,7 @@ function cerrarDialog(evt) {
 
 function abrirSesion(){
 
-    console.log("uola");
+    
     document.getElementById("log_button").removeEventListener("click", mostrarFormularioLogin);
     document.getElementById("log_button").addEventListener("click",cerrarSesion);
 
