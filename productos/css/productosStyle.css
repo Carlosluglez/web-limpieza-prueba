@@ -8,7 +8,9 @@
     box-sizing: border-box;
 
 }
-
+body{
+    background-image: url(../img/imgAmpliada.png);
+}
 /*para alinear el navegador*/
 nav {
     height: 80px;
@@ -50,6 +52,7 @@ li a:hover {
     color: rgb(213, 210, 210);
 }
 
+
 .checkbtn {
     font-size: 30px;
     color: white;
@@ -75,11 +78,25 @@ section {
     height: calc(100vh - 80px);
 }
 
-#producto {
+/* #producto {
     border: solid 1px black;
     width: 300px;
     background-color: antiquewhite;
-}
+} */
+#intro_productos{
+    text-transform: uppercase;
+        justify-content: center;
+}     
+div {
+    font-family: 'Koulen', cursive;
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  h1, h2, h3 {
+    margin: 10px 0;
+  }        
+      
 
 .nombre {
     text-transform: uppercase;
@@ -103,74 +120,7 @@ section {
     transition: 1s;
 }
 
-#mostrar_carrito {
-    background-image: linear-gradient(to bottom right, #95d3d3,#6aa07d   );
-    padding: 20px;
-    border: 1px solid black;
-    border-collapse: collapse;
-    top:20%;
-    left: 30%;
-    text-align: left;
-    width: 50%;
-    
-}
 
-#tabla_carrito td {
-
-    border: 1px solid black;
-    border-collapse: collapse;
-    text-align: center;
-    padding: 3px;
-    width: 100%;
-   
-    
-    
-}
-
-thead {
-    background-color: darkgreen;
-    color: white;
-    font-weight: bold;
-}
-
-tbody tr:nth-child(even) {
-
-    background-color: #eeeeee;
-
-}
-
-
-tbody tr:nth-child(odd) {
-
-    background-color: #ddfae9;
-
-}
-
-tfoot {
-
-    background-color: #f4fdcb;
-
-}
-
-/* top:20%;    */
-/* margin:0px auto; 
-    padding: 0px; */
-/* border-style: none;
-    box-sizing: content-box;
-    border-radius: 4px;
-    background-image: linear-gradient(to left top,white 75% , #1ab6b6 )  ;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
-
-#carrito {
-
-    /* display: none; */
-    margin: 5px;
-    /* padding: 10px; */
-}
-
-/* #formulario_login{
-
-} */
 
 .imagenes {
     width: 190px;
@@ -180,10 +130,16 @@ tfoot {
 }
 
 .estiloproductos {
-    background-color: rgb(173, 236, 178);
+    /* background-color: rgb(173, 236, 178); */
+    box-shadow: 0 4px 8px 0 rgba(85, 85, 85, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 300px;
+    text-align: center;
+    padding-top: 10px;
+    background-color: rgba(250, 250, 250, 0.6);
 }
 
 .contenedor {
+    font-family: 'Flavors', cursive;
     display: flex;
     width: 100%;
     justify-content: center;
@@ -192,7 +148,7 @@ tfoot {
     margin-bottom: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-image: url(../img/imgAmpliada.png);
+    
 
 }
 
@@ -204,7 +160,10 @@ tfoot {
 }
 
 form>div:hover {
-    background-color: darkgreen;
+    background-color: rgba(7, 71, 21, 0.6);
+    color: white;
+    
+ 
 }
 
 .informacion {

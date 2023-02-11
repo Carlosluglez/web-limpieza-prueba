@@ -15,6 +15,16 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&family=Luxurious+Roman&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/21d67cf8dd.js" crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/carrito_compras.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Flavors&family=Koulen&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Flavors&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="text/javascript" src="js/funciones.js"></script>
     <!-- <script src="js/jquery-3.6.3.js"></script> -->
@@ -68,7 +78,7 @@ if (isset($_POST['alta'])) {
             <li> <a href="../Index.php">Inicio</a></li>
             <li> <a href="productos.php">Productos</a></li>
             <li> <a href="../servicios/servicios.html">Servicios</a></li>
-            <li> <a href="#">Contacto</a></li>
+            <li> <a href="../contacto/contactos.php">Contacto</a></li>
 
             <?php
             // session_start(); 
@@ -93,7 +103,11 @@ if (isset($_POST['alta'])) {
         </ul>
 
     </nav>
-
+    <div id="intro_productos">
+        <h1>ESPECIALISTAS EN PRODUCTOS DE LIMPIEZA ECOLÓGICOS</h1><br>
+        <h2>con el mínimo impacto sobre el medio ambiente</h2><br>
+        <h3>Rgistrate,compralos a través de la web, nosotros te los llevamos a casa</h3>
+    </div>
     <section class="grid_content">
         <!-- login para logearse una vez que ya se esta registrado -->
         <dialog id="formulario_login">
@@ -202,7 +216,7 @@ if (isset($_POST['alta'])) {
 
         $productos = crearSelect($conn, "SELECT * from productos");
         // var_dump($productos);
-        echo "<div class='contenedor' id='contenedor'>";
+        echo "<div class='contenedor element' id='contenedor'>";
         foreach ($productos as $key => $valores) {
         ?>
             <form action="productos.php?comprar_id=<?php echo $valores['id_producto'] ?>" method="post">
@@ -210,25 +224,26 @@ if (isset($_POST['alta'])) {
                     <img class="imagenes" src="img/<?php echo $valores['id_producto'] ?>.jpg" alt="fotoProducto">
                     <div class="informacion">
                         <p id="nombre_<?php echo $valores['nombre'] ?>" class="nombre"> <?php echo $valores['nombre'] ?></p>
-                        <p class="precio"><?php echo $valores['precio'] ?>€</p>
+                        <p class="precio">Precio: <?php echo $valores['precio'] ?>€</p>
 
+                        
                         <!-- <p><?php echo $valores['descripcion'] ?></p> -->
                         <!-- <input type="number" min="1" max="100" id="cantidad_<?php echo $valores['id_producto'] ?>"> -->
-                        <input type="number" min="1" max="100" name="cantidad">
-                        <input type="submit" value="añadir al carrito" name="boton_carrito">
+                        <input type="number" min="1" max="100" name="cantidad" placeholder="introduce Uds" style="width: 100px;">
+                        <input type="submit" value="añadir al carrito" name="boton_carrito" id="boton_añadir_carrito" >
                         <!-- <img class="fa-solid fa-cart-shopping"></img> -->
 
 
                     </div>
                 </div>
             </form>
+                        
         <?php
 
         }
         echo "</div>"
 
         ?>
-
 
 
     </section>

@@ -1,0 +1,58 @@
+#mostrar_carrito {
+    background-image: linear-gradient(to bottom right, #95d3d3,#6aa07d   );
+    padding: 20px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    top:20%;
+    left: 30%;
+    text-align: left;
+    width: 50%;
+    
+}
+
+#tabla_carrito td {
+
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 3px;
+    width: 100%;
+    text-transform: uppercase;
+
+}
+
+thead {
+    background-color: darkgreen;
+    color: white;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+
+    background-color: #eeeeee;
+
+}
+
+
+tbody tr:nth-child(odd) {
+
+    background-color: #ddfae9;
+
+}
+
+tfoot {
+
+    background-color: #f4fdcb;
+
+}
+
+#carrito {
+
+    /* display: none; */
+    margin: 2px;
+    /* padding: 10px; */
+}
+#boton_añadir_carrito{
+    margin-bottom: 20px;
+}
+
