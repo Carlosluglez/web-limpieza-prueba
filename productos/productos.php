@@ -48,11 +48,8 @@ if (isset($_POST['alta'])) {
 } else if (isset($_POST['boton_carrito'])) {
     anadirAlCarrito();
     // var_dump($_COOKIE['carrito_sesion' . $_SESSION["nif_usu"]]);
-    header("Location: ".$_SERVER['PHP_SELF']);
+    header("Location: " . $_SERVER['PHP_SELF']);
 }
-
-// if (isset($_SESSION['nif_usu'])) {
-//     echo "<script>nif_usu='" . $_SESSION['nif_usu'] . "';</script>";
 
 ?>
 
@@ -97,11 +94,10 @@ if (isset($_POST['alta'])) {
 
     </nav>
 
-
     <section class="grid_content">
         <!-- login para logearse una vez que ya se esta registrado -->
         <dialog id="formulario_login">
-            <div class="container">
+            <div class="container ">
                 <div class="login-container">
                     <div class="register">
                         <h2>INICIAR SESION</h2>
@@ -157,11 +153,11 @@ if (isset($_POST['alta'])) {
                     if (isset($_COOKIE["carrito_sesion" . $_SESSION["nif_usu"]])) {
                         $carrito = $_COOKIE["carrito_sesion" . $_SESSION["nif_usu"]];
                         $carrito = unserialize($carrito);
-                       // var_dump($carrito);
-                        echo "<table>";
-                        echo "<tr>";
+                        // var_dump($carrito);
+                        echo "<table id='tabla_carrito'>";
+                        echo "<thead>";
                         echo "<th>Nombre Producto</th><th>Precio</th><th>Cantidad</th><th>Total</th>";
-                        echo "</tr>";
+                        echo "</thead>";
                         $suma = 0;
                         foreach ($carrito as $key => $valor) {
 
@@ -171,19 +167,22 @@ if (isset($_POST['alta'])) {
                             $stmt->execute();
                             $stmt->setFetchMode(PDO::FETCH_ASSOC);
                             $result = $stmt->fetchAll();
-
+                            echo "<tbody>";
                             echo "<tr>";
                             echo "<td>" . $result[0]['nombre'] . "</td>";
                             echo "<td>" . $result[0]['precio'] . "</td>";
                             echo "<td>" . $valor . "</td>";
                             echo "<td>" . $result[0]['precio'] * $valor . "</td>";
                             echo "</tr>";
+                            echo "</tbody>";
                             $suma += $result[0]['precio'] * $valor;
                         }
+                        echo "<tfoot>";
                         echo "<tr>";
-                        echo "<td colspan='3'>Total:</td>";
+                        echo "<td colspan='3'>Total Compra:</td>";
                         echo "<td>" . $suma . "</td>";
                         echo "</tr>";
+                        echo "</tfoot>";
                         echo "</table>";
                         echo  '<input type="submit" name="comprar" class="submit" value="COMPRAR" />';
                     } else {
@@ -207,7 +206,7 @@ if (isset($_POST['alta'])) {
         foreach ($productos as $key => $valores) {
         ?>
             <form action="productos.php?comprar_id=<?php echo $valores['id_producto'] ?>" method="post">
-                <div>
+                <div class="estiloproductos">
                     <img class="imagenes" src="img/<?php echo $valores['id_producto'] ?>.jpg" alt="fotoProducto">
                     <div class="informacion">
                         <p id="nombre_<?php echo $valores['nombre'] ?>" class="nombre"> <?php echo $valores['nombre'] ?></p>

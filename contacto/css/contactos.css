@@ -1,6 +1,96 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+        font-family: 'Krub', sans-serif;
+        font-size: 16px;
+        color: rgb(96, 131, 96);
+        background-image: url(../img/fondoIndex.jpg);
+        background-repeat: no-repeat;
+        background-size: 100vmax 100vmax;
+}
+
 /* Navegacion Principal/barra de navegación */
-.nav-bg {
-    background-color: var(--secundario);
+*{
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/*para alinear el navegador*/
+nav{
+    height: 80px;
+    width: 100%;
+    background-color: rgb(161, 204, 161);
+}
+.enlace{
+    position: absolute;
+    padding: 20px 50px;
+}
+.logo{
+    height: 40px;
+}
+
+nav ul{
+    float: right;
+    margin-right: 20px;
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav ul li a{
+    color:white;
+    font-size: 18px;
+    padding: 7px 7px;
+    text-transform: uppercase;
+}
+li a.active,li a:hover{
+    background-color: green;
+    transition: 3s;
+    color: rgb(213, 210, 210);
+}
+
+.checkbtn{
+    font-size:30px;
+    color:white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor:pointer;
+    display:none;
+}
+#check{
+    display: none;
+}
+section{
+    background-image: url(../img/.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+	
+}
+
+#login_boton{
+
+    background-color: darkgreen;
+    color:white;
+    border-radius: 7px;
+    width: 38px;
+}
+#login_boton:hover{
+
+    background-color: chartreuse;
+    color: black;
+    cursor:pointer;
+    width: 48px;
+    height: 30px;
+    transition: 1s;
 }
 
 /*VARIABLES GLOBALES **/
@@ -13,16 +103,6 @@
     --grisClaro: #DFE9F3;
 }
 
-html {
-    font-size: 62.5%;
-
-}
-
-body {
-    font-size: 16px;
-    /* 1rem = 10px */
-    font-family: 'Krub', sans-serif;
-}
 
 .contenedor {
     max-width: 120rem;
@@ -211,6 +291,8 @@ h3 {
 /** Footer **/
 .footer {
     text-align: center;
+	padding: 0px;
+    margin: 30px;
 }
 
 
@@ -231,100 +313,6 @@ h3 {
 }
 
 
-/* ----------- 0 - 400px ----------- */
-@media screen and (max-width: 400px) {
-    body {
-        font-family: "Calibri, sans-serif";
-        font-size: 6px;
-        color: red;
-        background-image: url(../img/fondo6.jpg);
-        background-size: 100vmax 100vmax;
-    }
-
-    .menu {
-        visibility: visible;
-        max-width: 3rem;
-        position: absolute;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-        left: 40%;
-    }
-
-    main p {
-        width: 50%;
-    }
-
-    .dropdown:hover .dropdown-content ul li {
-        background-color: blue;
-        top: -4.5rem;
-        left: -3.5rem;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: contents;
-        left: 43%;
-    }
-
-}
-
-/* ----------- 400 - 800px ----------- */
-@media screen and (min-width: 400px) and (max-width: 800px) {
-    body {
-        font-size: 8px;
-        font-family: cambria;
-        color: blue;
-        background-image: url(../img/fondo1a.jpg);
-        background-repeat: repeat 2;
-        background-size: 100vmax 100vmax;
-
-    }
-
-    .menu {
-        visibility: visible;
-        max-width: 3rem;
-        position: absolute;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: contents;
-        left: 43%;
-    }
-
-    .dropdown:hover .dropdown-content ul li {
-        top: -4.5rem;
-        left: 10.5rem;
-    }
-
-    .dropdown:hover .dropdown-content ul {
-        display: contents;
-    }
-
-    main p {
-        width: 50%;
-    }
-}
-
-
-
-
-/* ----------- 801px - 1200px ----------- */
-@media screen and (min-width: 801px) and (max-width: 1200px) {
-    body {
-        font-family: "Comic Sans MS", "Comic Sans", cursive;
-        font-size: 10px;
-        color: green;
-        background-image: url(../img/fondo2a.jpg);
-        background-repeat: repeat 2;
-        background-size: 100vmax 100vmax;
-    }
-
-    .dropdown {
-        height: fit-content;
-    }
-}
-
 /* ----------- 1201px - 1600px ----------- */
 @media screen and (min-width: 1201px) and (max-width: 1600px) {
     .hero {
@@ -333,9 +321,9 @@ h3 {
 
     body {
         font-family: "Times New Roman", Times, serif;
-        font-size: 12px;
-        color: rgb(17, 0, 255);
-        background-image: url(../img/fondo8.png);
+        font-size: 17px;
+        color: rgb(48, 129, 48);
+        background-image: url(../img/fondoIndex.jpg);
         background-repeat: no-repeat;
         background-size: 100vmax 100vmax;
     }
@@ -346,23 +334,52 @@ h3 {
     }
 }
 
-/* ----------- 1600px + ----------- */
-@media screen and (min-width: 1601px) {
-    .hero {
-        background-image: none;
-    }
+/* para maximo de 952px tables +- */
 
-    body {
-        font-family: courier, courier new, serif;
+@media (max-width: 952px){
+
+    .enlace{
+        padding-left: 20px;
+    }
+    nav ul li a{
         font-size: 16px;
-        color: orange;
-        background-image: url(../img/fondo9.jpg);
-        background-repeat: no-repeat;
-        background-size: 100vmax 100vmax;
     }
 
-    .dropdown:hover .dropdown-content ul li {
-        top: -4.5rem;
-        left: 14.5rem;
+}
+/* para moviles max 600px */
+
+@media (max-width: 565px){
+
+    .checkbtn{
+       display:block;
+    }
+     ul{
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: rgb(96, 131, 96);
+        top:80px;
+        left:-100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+
+
+    }
+    nav ul li a{
+        font-size: 16px;
+
+    }
+    li a:hover, li a.active{
+        background-color: none;
+        color:green;
+    }
+    #check:checked ~ ul{
+        left:0;
     }
 }
+
