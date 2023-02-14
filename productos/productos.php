@@ -106,7 +106,7 @@ if (isset($_POST['alta'])) {
     <div id="intro_productos">
         <h1>ESPECIALISTAS EN PRODUCTOS DE LIMPIEZA ECOLÓGICOS</h1><br>
         <h2>con el mínimo impacto sobre el medio ambiente</h2><br>
-        <h3>Rgistrate,compralos a través de la web, nosotros te los llevamos a casa</h3>
+        <h2>Rgistrate,compralos a través de la web, nosotros te los llevamos a casa</h3>
     </div>
     <section class="grid_content">
         <!-- login para logearse una vez que ya se esta registrado -->

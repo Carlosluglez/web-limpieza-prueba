@@ -85,7 +85,9 @@ section {
 } */
 #intro_productos{
     text-transform: uppercase;
-        justify-content: center;
+    justify-content: center;
+    background-color: rgba(0, 122, 107, 0.3);
+    
 }     
 div {
     font-family: 'Koulen', cursive;
@@ -95,6 +97,7 @@ div {
   }
   h1, h2, h3 {
     margin: 10px 0;
+    color: rgb(37, 20, 20);
   }        
       
 
@@ -149,7 +152,6 @@ div {
     padding-top: 20px;
     padding-bottom: 20px;
     
-
 }
 
 .contenedor>div {
@@ -163,7 +165,7 @@ form>div:hover {
     background-color: rgba(7, 71, 21, 0.6);
     color: white;
     
- 
+
 }
 
 .informacion {
